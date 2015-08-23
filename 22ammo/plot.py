@@ -1,7 +1,5 @@
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 
 def rads_to_moa(rads):
@@ -25,18 +23,41 @@ def group_to_moa(groupsize, caliber=0.22, yardage=50):
     return rads_to_moa(theta)
 
 
+def mean_with_highest_removed(x):
+    '''
+    Drop the highest observation and take the mean
+
+    >>> mean_with_highest_removed([0, 1, 2, 3])
+    1
+
+    '''
+    x = np.array(x).copy()
+    x.sort()
+    return np.mean(x[:-1])
+
+
 groups = pd.read_csv('data/groups.csv')
 groups['moa'] = group_to_moa(groups['inches'])
 
-# Throw out the worst group for each ammo type
-# Would do that if calculating confidence intervals
+# Throw out the worst group for each ammo type when taking the mean
+groups['mean'] = groups['moa'].groupby(groups['ammo']).transform(mean_with_highest_removed)
 
-ax0 = plt.subplot(121)
-sns.stripplot('ammo', 'moa', data=groups, jitter=True)
-ax0.set_ylim(0, 5)
+groups.sort('mean', inplace=True)
 
-ax1 = plt.subplot(122)
-sns.boxplot('ammo', 'moa', data=groups)
-ax1.set_ylim(0, 5)
+if __name__ == '__main__':
 
-plt.savefig('groups.png')
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.stripplot('ammo', 'moa', data=groups, jitter=True)
+    plt.savefig('points.png')
+
+    plt.clf()
+    sns.boxplot('ammo', 'moa', data=groups)
+    plt.savefig('boxplot.png')
+
+    plt.clf()
+    sns.barplot('ammo', 'mean', data=groups, ci=None)
+    plt.title('mean moa for best 9 of 10 groups')
+    plt.ylabel('moa')
+    plt.savefig('avg_moa.png')
