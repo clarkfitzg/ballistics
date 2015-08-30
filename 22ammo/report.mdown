@@ -12,4 +12,4 @@ The best way to do this is through experiments.
 .22 rifles are perfect for this because a wide variety of match ammunition
 is available.
 
-[! average moa](avg_moa.png)
+![alt text](avg_moa.png)
