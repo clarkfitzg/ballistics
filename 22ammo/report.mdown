@@ -1,15 +1,90 @@
 
 # 22 ammo comparison
 
+### Abstract
+
+In this experiment I tested 7 types of ammunition for accuracy in a
+Savage bolt action .22.
+SK rifle match ammunition was the clear winner, with
+average 5 shot groups around 1 minute of angle (1 MOA).
+
+## Introduction
+
+Accurate rifles fascinate me. 
+
+I'd love to get into precision rifle shooting, but it's more expensive than
+I can afford right now. This is probably true for many people.
+However, I can start to develop some of the skills
+and techniques by practicing with an inexpensive .22.
+
+The [Precision Rifle Blog](http://precisionrifleblog.com/) inspired me to
+share what I learned.
+
 Using different ammo in the same gun 
 can result in different levels of accuracy.
 To get the best accuracy out of a particular firearm you need to discover
 what type of ammo it shoots well. 
 The best way to do this is through experiments.
 
+## The question
+
+Which .22 ammo makes the tightest groups in this gun?
+
+![alt text](savage_mark2.png)
+
 ## The experiment
 
-.22 rifles are perfect for this because a wide variety of match ammunition
-is available.
+### Ammunition
+
+7 types of match grade ammunition were tested.
+They come in boxes of 50 rounds ranging in
+price from $7.99 to $13.17, making the cost per round $0.16 to $0.26.
+It was all ordered fresh and used right away.
+The total cost of ammo for this experiment was around $80.
+
+There is cheaper ammo out there, but I would be surprised if it
+can consistently outperform the match grade stuff.
+More expensive match grade ammo is available,
+but remember the big reason for shooting .22 is to keep the cost down.
+I also doubt that
+this particular shooter / gun combination could achieve much better
+accuracy due to ammo. 
+
+### Range Time
+
+The targets were set up at 50 yards and shot while aiming at the 
+bullseye, producing a 5 shot group. Each type of ammunition shot 10 groups.
+The barrel was cleaned between each type of ammunition, keeping the
+starting conditions fair for each type of ammo.
+
+Shooting was done from a bipod in the prone position. The rear of the gun
+rested on sandbags. The scope used was a Bushnell Elite 3200 4-12 x 40mm,
+dialed to 12x magnification.
+
+The 7 types of ammunition were tested over the course of two sessions: 4
+the first day, and 3 the second. This kept me from getting tired and losing
+focus. Weather conditions on both days were similar. 
+It was hot with just a slight wind from the rear.
+
+### Measurements
+
+The groups were measured from the furthest outside lead
+marks using a dial caliper. This gave three decimal digits of precision,
+ie. 0.674 inches instead of 0.7 inches. This works much better for data
+analysis.
+
+Five single 0.22 caliber bullet holes in the paper measured 
+0.217, 0.214, 0.219, 0.223, and 0.222 inches using this technique.
+So it's appropriate to subtract 0.22 inches from the original outer 
+measurements to calculate the group size measured from center to center.
+
+### Targets
+
+Having high quality, consistent targets was very helpful for this experiment.
+Don't try to save money by printing out your own targets. Targets are
+very cheap relative to everything else required. Buy a 100 pack and be done
+with it. I used these [50 yd benchrest
+targets](http://www.midwayusa.com/product/941874/national-target-international-bench-rest-shooters-target-ibs-50-yd-rimfire-paper-package-of-100?cm_vc=ProductFinding)
+and would recommend them.
 
 ![alt text](avg_moa.png)

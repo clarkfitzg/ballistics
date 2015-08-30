@@ -43,9 +43,6 @@ def postprocess(rotation=30):
     ax = plt.gca()
     for label in ax.get_xticklabels():
         label.set_rotation(rotation)
-        newtext = label.get_text().replace('_', ' ')
-        label.set_text('foo')
-        label.update({'rotation': rotation, 'text': newtext})
     plt.tight_layout()
 
 

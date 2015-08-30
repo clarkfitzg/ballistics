@@ -1,24 +1,24 @@
 ammo,inches
-sk_rifle_match,1.563
-sk_rifle_match,0.821
-sk_rifle_match,0.900
-sk_rifle_match,0.881
-sk_rifle_match,0.606
-sk_rifle_match,0.589
-sk_rifle_match,0.916
-sk_rifle_match,0.821
-sk_rifle_match,0.534
-sk_rifle_match,0.879
-rws_target_rifle,1.728
-rws_target_rifle,1.799
-rws_target_rifle,1.866
-rws_target_rifle,1.997
-rws_target_rifle,1.978
-rws_target_rifle,0.968
-rws_target_rifle,2.283
-rws_target_rifle,1.874
-rws_target_rifle,2.015
-rws_target_rifle,1.654
+sk rifle match,1.563
+sk rifle match,0.821
+sk rifle match,0.900
+sk rifle match,0.881
+sk rifle match,0.606
+sk rifle match,0.589
+sk rifle match,0.916
+sk rifle match,0.821
+sk rifle match,0.534
+sk rifle match,0.879
+rws target rifle,1.728
+rws target rifle,1.799
+rws target rifle,1.866
+rws target rifle,1.997
+rws target rifle,1.978
+rws target rifle,0.968
+rws target rifle,2.283
+rws target rifle,1.874
+rws target rifle,2.015
+rws target rifle,1.654
 norma,2.716
 norma,1.415
 norma,1.346
@@ -29,43 +29,43 @@ norma,2.439
 norma,2.316
 norma,1.949
 norma,1.573
-eley_target_yellow,1.934
-eley_target_yellow,1.109
-eley_target_yellow,1.148
-eley_target_yellow,1.617
-eley_target_yellow,0.692
-eley_target_yellow,0.851
-eley_target_yellow,1.020
-eley_target_yellow,1.008
-eley_target_yellow,1.332
-eley_target_yellow,0.647
-eley_edge_black,3.074
-eley_edge_black,1.017
-eley_edge_black,0.591
-eley_edge_black,0.665
-eley_edge_black,0.693
-eley_edge_black,0.868
-eley_edge_black,1.155
-eley_edge_black,1.041
-eley_edge_black,0.697
-eley_edge_black,0.660
-rws_rifle_match,1.628
-rws_rifle_match,1.090
-rws_rifle_match,1.174
-rws_rifle_match,1.246
-rws_rifle_match,1.200
-rws_rifle_match,1.743
-rws_rifle_match,1.068
-rws_rifle_match,1.501
-rws_rifle_match,0.853
-rws_rifle_match,1.012
-eley_club_orange,1.903
-eley_club_orange,0.776
-eley_club_orange,0.595
-eley_club_orange,1.379
-eley_club_orange,1.445
-eley_club_orange,1.302
-eley_club_orange,0.887
-eley_club_orange,0.751
-eley_club_orange,1.556
-eley_club_orange,0.619
+eley target yellow,1.934
+eley target yellow,1.109
+eley target yellow,1.148
+eley target yellow,1.617
+eley target yellow,0.692
+eley target yellow,0.851
+eley target yellow,1.020
+eley target yellow,1.008
+eley target yellow,1.332
+eley target yellow,0.647
+eley edge black,3.074
+eley edge black,1.017
+eley edge black,0.591
+eley edge black,0.665
+eley edge black,0.693
+eley edge black,0.868
+eley edge black,1.155
+eley edge black,1.041
+eley edge black,0.697
+eley edge black,0.660
+rws rifle match,1.628
+rws rifle match,1.090
+rws rifle match,1.174
+rws rifle match,1.246
+rws rifle match,1.200
+rws rifle match,1.743
+rws rifle match,1.068
+rws rifle match,1.501
+rws rifle match,0.853
+rws rifle match,1.012
+eley club orange,1.903
+eley club orange,0.776
+eley club orange,0.595
+eley club orange,1.379
+eley club orange,1.445
+eley club orange,1.302
+eley club orange,0.887
+eley club orange,0.751
+eley club orange,1.556
+eley club orange,0.619
