@@ -1,0 +1,15 @@
+
+# 22 ammo comparison
+
+Using different ammo in the same gun 
+can result in different levels of accuracy.
+To get the best accuracy out of a particular firearm you need to discover
+what type of ammo it shoots well. 
+The best way to do this is through experiments.
+
+## The experiment
+
+.22 rifles are perfect for this because a wide variety of match ammunition
+is available.
+
+[! average moa](avg_moa.png)

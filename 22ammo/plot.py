@@ -36,6 +36,19 @@ def mean_with_highest_removed(x):
     return np.mean(x[:-1])
 
 
+def postprocess(rotation=30):
+    '''
+    Rotate labels on the current x axis
+    '''
+    ax = plt.gca()
+    for label in ax.get_xticklabels():
+        label.set_rotation(rotation)
+        newtext = label.get_text().replace('_', ' ')
+        label.set_text('foo')
+        label.update({'rotation': rotation, 'text': newtext})
+    plt.tight_layout()
+
+
 groups = pd.read_csv('data/groups.csv')
 groups['moa'] = group_to_moa(groups['inches'])
 
@@ -50,14 +63,17 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
 
     sns.stripplot('ammo', 'moa', data=groups, jitter=True)
+    postprocess()
     plt.savefig('points.png')
 
     plt.clf()
     sns.boxplot('ammo', 'moa', data=groups)
+    postprocess()
     plt.savefig('boxplot.png')
 
     plt.clf()
     sns.barplot('ammo', 'mean', data=groups, ci=None)
-    plt.title('mean moa for best 9 of 10 groups')
+    plt.title('mean moa for best 9 of 10 five shot groups')
     plt.ylabel('moa')
+    postprocess()
     plt.savefig('avg_moa.png')
