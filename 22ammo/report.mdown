@@ -15,13 +15,13 @@ share what I learned.
 
 ## Introduction
 
-I'd love to get into precision rifle shooting, but it's a little expensive.
+I'd love to get into accurate rifle shooting, but it's a little expensive.
 However, I can start to develop some of the skills
-and techniques by practicing with an inexpensive .22.
+and techniques by practicing with an inexpensive .22. 
 
 Using different ammo in the same gun 
 can result in different levels of precision.
-To get the best precision out of a particular firearm you need to discover
+To get the best results out of a particular firearm you need to discover
 what type of ammo it shoots well. This is especially true with .22's, since
 such a wide variety of ammo is available.
 The best way to determine which ammo your gun likes is through an
@@ -75,6 +75,8 @@ marks using a dial caliper. This gave three decimal digits of precision,
 ie. 0.674 inches instead of 0.7 inches. This works much better for data
 analysis.
 
+![alt text](caliper.jpg)
+
 Using this technique, five single 0.22 caliber bullet holes in the paper 
 measured 
 0.217, 0.214, 0.219, 0.223, and 0.222 inches.
@@ -96,7 +98,7 @@ These points represent the raw group sizes.
 
 ![alt text](points.png)
 
-Observe that the Eley Edge Black shot very well, yet also had the worst
+Observe that the Eley Edge Black generally performed well, yet also had the worst
 group of the entire experiment. This was due to a failure to feed, when one
 of the bullets was actually deformed. I shot it anyways, and it was quite
 the flier.
@@ -105,22 +107,23 @@ in this gun. Other ammunition fed reliably.
 
 ## Conclusions
 
-This same framework could be used to test for changes in precision resulting
-from any experiment. For example, one could keep the rifle and ammunition
-the same and change only the shooter to see who shot best with a
-particular rifle.
-
-This whole report focused on precision through group size. It's possible
+I focused on precision through group size. It's possible
 that accuracy could be different, and that would be a different experiment.
 I focused on precision with the assumption that once the rifle / shooter /
 ammo combination is verified to be precise, I could adjust the scope and
 achieve accuracy. This bears out in practice, since the best ammuntion was
 consistently accurate as well.
 
+This same framework could be used to test for changes in precision resulting
+from any experiment. For example, one could keep the rifle and ammunition
+the same and change only the shooter to see who shot best with a
+particular rifle.
+
 Originally I had planned to use more formal statistical methods like ANOVA
 to analyze this data. After shooting, it was clear that this was
-unnecessary. The boxplots on the top of the page tell the whole story. SK
-rifle match was much more precise than the others. So I sent in my bulk
-order of ammo for SK rifle match.
+unnecessary. The boxplots on the top of the page tell the whole story. Eley
+Edge and SK rifle match were the best. But Eley Edge is more expensive
+and doesn't feed well. I'll be buying SK rifle match when I want to practice
+accurate shooting.
 
 ![alt text](avg_moa.png)
