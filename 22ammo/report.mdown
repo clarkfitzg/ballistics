@@ -3,7 +3,8 @@
 
 ### Abstract
 
-In this experiment I tested 7 types of ammunition for precision in a
+In this experiment I compared 7 types of commonly 
+available, mid priced ammunition using a
 Savage bolt action .22.
 SK rifle match ammunition was the clear winner, with
 5 shot groups around 1 minute of angle (1 MOA).
@@ -111,6 +112,29 @@ the flier.
 In general all the different types of Eley ammunition had trouble feeding
 in this gun. Other ammunition fed reliably.
 
+### Improvements
+
+This experiment could have been improved through a double blind study. I
+didn't feel that it was necessary to go to the trouble, since I 
+had no preconceived notion about which ammunition would shoot best.
+
+For more formal statistical conclusions power
+calculations could have
+been used along with an [analysis of
+variance](https://en.wikipedia.org/wiki/Analysis_of_variance) model.
+
+However, the nonlinearity of the [QQ
+plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) below shows that 
+the assumption of normally distributed data does *not* hold, even
+with the effect of the single glaring outlier removed. 
+
+![alt text](qqplot.png)
+
+This could possibly be made more amenable to statistics through 
+transformations. This might be necessary if one wanted to test something
+with small effect sizes, say 0.1 MOA. But in this case the
+conclusions were already obvious.
+
 ## Conclusions
 
 I focused on precision through group size. It's possible
@@ -125,9 +149,7 @@ from any experiment. For example, one could keep the rifle and ammunition
 the same and change only the shooter to see who shot best with a
 particular rifle.
 
-Originally I had planned to use more formal statistical methods like ANOVA
-to analyze this data. After shooting, it was clear that this was
-unnecessary. The boxplots on the top of the page tell the whole story. Eley
+The boxplots on the top of the page tell the whole story. Eley
 Edge and SK rifle match were the best. But Eley Edge is more expensive
 and doesn't feed well. I'll be buying SK rifle match when I want to practice
 accurate shooting.
