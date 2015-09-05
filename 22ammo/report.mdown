@@ -11,7 +11,8 @@ SK rifle match ammunition was the clear winner, with
 ![alt text](boxplot.png)
 
 The [Precision Rifle Blog](http://precisionrifleblog.com/) inspired me to
-share what I learned.
+share what I learned. All results are presented in units of MOA, since this
+facilitates comparisons between other ranges and calibers.
 
 ## Introduction
 
@@ -41,6 +42,8 @@ Which .22 ammo makes the tightest groups in this gun?
 They come in boxes of 50 rounds ranging in
 price from $7.99 to $13.17, making the cost per round $0.16 to $0.26.
 It was all ordered fresh and used right away.
+The selection criteria was mid grade target ammunition that was available
+from Midway in July of 2015.
 The total cost of ammo for this experiment was around $80.
 
 There is cheaper ammo out there, but I would be surprised if it
@@ -54,8 +57,8 @@ precision due to ammo.
 ### Range Time
 
 The targets were set up at 50 yards and shot while aiming at the 
-bullseye, producing a 5 shot group.
-Each type of ammunition shot 10 groups.
+bullseye, producing a 5 shot group. 10 groups were shot with each type of
+ammunition.
 The barrel was cleaned between each type of ammunition, keeping the
 conditions similar for each type of ammo.
 
@@ -63,7 +66,7 @@ Shooting was done from a bipod in the prone position. The rear of the gun
 rested on sandbags. The scope used was a Bushnell Elite 3200 4-12 x 40mm,
 dialed to 12x magnification.
 
-The 7 types of ammunition were tested over the course of two sessions: 4
+7 types of ammunition were tested over the course of two sessions: 4
 the first day, and 3 the second. This kept me from getting tired and losing
 focus. Weather conditions on both days were similar. 
 It was hot with just a slight wind from the rear.
@@ -98,6 +101,9 @@ These points represent the raw group sizes.
 
 ![alt text](points.png)
 
+The best groups were 0.6 MOA. But those groups were outliers from the best
+ammunition. It does not mean that this is a sub MOA gun!
+
 Observe that the Eley Edge Black generally performed well, yet also had the worst
 group of the entire experiment. This was due to a failure to feed, when one
 of the bullets was actually deformed. I shot it anyways, and it was quite
@@ -110,7 +116,7 @@ in this gun. Other ammunition fed reliably.
 I focused on precision through group size. It's possible
 that accuracy could be different, and that would be a different experiment.
 I focused on precision with the assumption that once the rifle / shooter /
-ammo combination is verified to be precise, I could adjust the scope and
+ammo combination is verified to be precise, the scope could be adjusted to
 achieve accuracy. This bears out in practice, since the best ammuntion was
 consistently accurate as well.
 
