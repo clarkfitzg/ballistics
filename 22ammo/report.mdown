@@ -3,7 +3,7 @@
 
 ### Abstract
 
-In this experiment I tested 7 types of ammunition for accuracy in a
+In this experiment I tested 7 types of ammunition for precision in a
 Savage bolt action .22.
 SK rifle match ammunition was the clear winner, with
 5 shot groups around 1 minute of angle (1 MOA).
@@ -20,8 +20,8 @@ However, I can start to develop some of the skills
 and techniques by practicing with an inexpensive .22.
 
 Using different ammo in the same gun 
-can result in different levels of accuracy.
-To get the best accuracy out of a particular firearm you need to discover
+can result in different levels of precision.
+To get the best precision out of a particular firearm you need to discover
 what type of ammo it shoots well. This is especially true with .22's, since
 such a wide variety of ammo is available.
 The best way to determine which ammo your gun likes is through an
@@ -49,7 +49,7 @@ More expensive match grade ammo is available,
 but remember the big reason for shooting .22 is to keep the cost down.
 I also doubt that
 this particular shooter / gun combination could achieve much better
-accuracy due to ammo. 
+precision due to ammo. 
 
 ### Range Time
 
@@ -105,8 +105,20 @@ in this gun. Other ammunition fed reliably.
 
 ## Conclusions
 
+This same framework could be used to test for changes in precision resulting
+from any experiment. For example, one could keep the rifle and ammunition
+the same and change only the shooter to see who shot best with a
+particular rifle.
+
+This whole report focused on precision through group size. It's possible
+that accuracy could be different, and that would be a different experiment.
+I focused on precision with the assumption that once the rifle / shooter /
+ammo combination is verified to be precise, I could adjust the scope and
+achieve accuracy. This bears out in practice, since the best ammuntion was
+consistently accurate as well.
+
 Originally I had planned to use more formal statistical methods like ANOVA
-to analyze the data. After shooting, it was clear that this was
+to analyze this data. After shooting, it was clear that this was
 unnecessary. The boxplots on the top of the page tell the whole story. SK
 rifle match was much more precise than the others. So I sent in my bulk
 order of ammo for SK rifle match.
