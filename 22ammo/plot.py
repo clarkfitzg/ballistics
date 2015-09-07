@@ -3,6 +3,7 @@ import pandas as pd
 import seaborn as sns
 from scipy import stats
 import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
 
 
 def rads_to_moa(rads):
@@ -59,10 +60,10 @@ def read_groups(datafile='data/groups.csv'):
 
     # Flag the largest group for each type of ammo
     groups['largest'] = (groups['moa']
-                      .groupby(groups['ammo'])
-                      .transform(lambda x: x == max(x))
-                      .astype(bool)
-                      )
+                         .groupby(groups['ammo'])
+                         .transform(lambda x: x == max(x))
+                         .astype(bool)
+                         )
 
     # Throw out the worst group for each ammo type when taking the mean
     groups['mean'] = (groups['moa']
@@ -70,11 +71,12 @@ def read_groups(datafile='data/groups.csv'):
                       .transform(mean_with_highest_removed)
                       )
 
+    # Standardize each to see if normal approximation holds
     groups['standard'] = (groups['moa']
-                        [~groups['largest']]
-                        .groupby(groups['ammo'])
-                        .transform(stats.zscore, ddof=1)
-                         )
+                          [~groups['largest']]
+                          .groupby(groups['ammo'])
+                          .transform(stats.zscore, ddof=1)
+                          )
 
     groups.sort('mean', inplace=True)
 
@@ -100,17 +102,42 @@ def make_plots(groups):
     plt.savefig('avg_moa.png')
 
     plt.clf()
+    std = groups['standard']
+    std = std[std.notnull()]
+
     fig, axes = plt.subplots(ncols=2)
-    sns.distplot(groups['standard'], ax=axes[0])
-    stats.probplot(groups['standard'], plot=axes[1])
+    sns.distplot(std, ax=axes[0])
+    stats.probplot(std, plot=axes[1])
     fig.set_size_inches(6, 4)
     fig.tight_layout()
     plt.savefig('qqplot.png')
 
 
+def print_stats(groups):
+    '''
+    Print fitted model comparing sk rifle match as intercept and 
+    eley edge as treatment
+    '''
+
+    ammo = groups['ammo']
+    twobest = (groups[(ammo == 'sk rifle match')
+                      | (ammo == 'eley edge black')]).copy()
+
+    # Can't figure out how to set reference level for anova model
+    # so do it manually
+    twobest['eley'] = (twobest['ammo'] == 'eley edge black')
+
+    model = smf.ols('moa ~ eley', data=twobest,
+            subset=np.logical_not(twobest['largest']))
+
+    print(model.fit().summary())
+
+
 def main():
+
     groups = read_groups()
     make_plots(groups)
+    print_stats(groups)
 
 
 if __name__ == '__main__':
