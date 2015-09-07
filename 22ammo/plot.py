@@ -1,5 +1,8 @@
 import numpy as np
 import pandas as pd
+import seaborn as sns
+from scipy import stats
+import matplotlib.pyplot as plt
 
 
 def rads_to_moa(rads):
@@ -46,18 +49,39 @@ def postprocess(rotation=30):
     plt.tight_layout()
 
 
-groups = pd.read_csv('data/groups.csv')
-groups['moa'] = group_to_moa(groups['inches'])
+def read_groups(datafile='data/groups.csv'):
+    '''
+    Read and perform calculations on the groups
+    '''
 
-# Throw out the worst group for each ammo type when taking the mean
-groups['mean'] = groups['moa'].groupby(groups['ammo']).transform(mean_with_highest_removed)
+    groups = pd.read_csv(datafile)
+    groups['moa'] = group_to_moa(groups['inches'])
 
-groups.sort('mean', inplace=True)
+    # Flag the largest group for each type of ammo
+    groups['largest'] = (groups['moa']
+                      .groupby(groups['ammo'])
+                      .transform(lambda x: x == max(x))
+                      .astype(bool)
+                      )
 
-if __name__ == '__main__':
+    # Throw out the worst group for each ammo type when taking the mean
+    groups['mean'] = (groups['moa']
+                      .groupby(groups['ammo'])
+                      .transform(mean_with_highest_removed)
+                      )
 
-    import seaborn as sns
-    import matplotlib.pyplot as plt
+    groups['standard'] = (groups['moa']
+                        [~groups['largest']]
+                        .groupby(groups['ammo'])
+                        .transform(stats.zscore, ddof=1)
+                         )
+
+    groups.sort('mean', inplace=True)
+
+    return groups
+
+
+def make_plots(groups):
 
     sns.stripplot('ammo', 'moa', data=groups, jitter=True)
     postprocess()
@@ -74,3 +98,21 @@ if __name__ == '__main__':
     plt.ylabel('moa')
     postprocess()
     plt.savefig('avg_moa.png')
+
+    plt.clf()
+    fig, axes = plt.subplots(ncols=2)
+    sns.distplot(groups['standard'], ax=axes[0])
+    stats.probplot(groups['standard'], plot=axes[1])
+    fig.set_size_inches(6, 4)
+    fig.tight_layout()
+    plt.savefig('qqplot.png')
+
+
+def main():
+    groups = read_groups()
+    make_plots(groups)
+
+
+if __name__ == '__main__':
+
+    main()
