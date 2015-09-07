@@ -1,33 +1,31 @@
-
 # 22 ammo comparison
+
+Clark Fitzgerald, Statistics PhD student
 
 ### Abstract
 
-In this experiment I compared 7 types of commonly 
-available, mid priced ammunition using a
-Savage bolt action .22.
-SK rifle match ammunition was the clear winner, with
-5 shot groups around 1 minute of angle (1 MOA).
+In this experiment I compared 7 types of commonly available, mid priced
+ammunition using a Savage bolt action .22.  One type of ammo was the clear
+winner, with 5 shot groups around 1 minute of angle (1 MOA). 
 
 ![alt text](boxplot.png)
 
-The [Precision Rifle Blog](http://precisionrifleblog.com/) inspired me to
-share what I learned. All results are presented in units of MOA, since this
-facilitates comparisons between other ranges and calibers.
+This plot shows the distribution of group sizes in MOA. All results are
+presented in units of MOA, since this facilitates comparisons between other
+ranges and calibers.  The [Precision Rifle
+Blog](http://precisionrifleblog.com/) inspired me to share what I learned. 
 
 ## Introduction
 
 I'd love to get into accurate rifle shooting, but it's a little expensive.
-However, I can start to develop some of the skills
-and techniques by practicing with an inexpensive .22. 
+However, I can start to develop some of the skills and techniques by
+practicing with an inexpensive .22. 
 
-Using different ammo in the same gun 
-can result in different levels of precision.
-To get the best results out of a particular firearm you need to discover
-what type of ammo it shoots well. This is especially true with .22's, since
-such a wide variety of ammo is available.
-The best way to determine which ammo your gun likes is through an
-experiment.
+Using different ammo in the same gun can result in different levels of
+precision.  To get the best results out of a particular firearm you need to
+discover what type of ammo it shoots well. This is especially true with
+.22's, since such a wide variety of ammo is available.  The best way to
+determine which ammo your gun likes is through an experiment.
 
 ## The question
 
@@ -39,27 +37,23 @@ Which .22 ammo makes the tightest groups in this gun?
 
 ### Ammunition
 
-7 types of match grade ammunition were tested.
-They come in boxes of 50 rounds ranging in
-price from $7.99 to $13.17, making the cost per round $0.16 to $0.26.
-It was all ordered fresh and used right away.
-The selection criteria was mid grade target ammunition that was available
-from Midway in July of 2015.
-The total cost of ammo for this experiment was around $80.
+7 types of match grade ammunition were tested.  They come in boxes of 50
+rounds ranging in price from $7.99 to $13.17, making the cost per round
+$0.16 to $0.26.  It was all ordered fresh and used right away.  The
+selection criteria was mid grade target ammunition that was available from
+Midway in July of 2015.  The total cost of ammo for this experiment was
+around $80.
 
-There is cheaper ammo out there, but I would be surprised if it
-can consistently outperform the match grade stuff.
-More expensive match grade ammo is available,
-but remember the big reason for shooting .22 is to keep the cost down.
-I also doubt that
-this particular shooter / gun combination could achieve much better
-precision due to ammo. 
+There is cheaper ammo out there, but I would be surprised if it can
+consistently outperform the match grade stuff.  More expensive match grade
+ammo is available, but remember the big reason for shooting .22 is to keep
+the cost down.  I also doubt that this particular shooter / gun combination
+could achieve much better precision due to ammo. 
 
 ### Range Time
 
-The targets were set up at 50 yards and shot while aiming at the 
-bullseye, producing a 5 shot group. 10 groups were shot with each type of
-ammunition.
+The targets were set up at 50 yards and shot while aiming at the bullseye,
+producing a 5 shot group. 10 groups were shot with each type of ammunition.
 The barrel was cleaned between each type of ammunition, keeping the
 conditions similar for each type of ammo.
 
@@ -67,32 +61,28 @@ Shooting was done from a bipod in the prone position. The rear of the gun
 rested on sandbags. The scope used was a Bushnell Elite 3200 4-12 x 40mm,
 dialed to 12x magnification.
 
-7 types of ammunition were tested over the course of two sessions: 4
-the first day, and 3 the second. This kept me from getting tired and losing
-focus. Weather conditions on both days were similar. 
-It was hot with just a slight wind from the rear.
+7 types of ammunition were tested over the course of two sessions: 4 the
+first day, and 3 the second. This kept me from getting tired and losing
+focus. Weather conditions on both days were similar.  It was hot with just
+a slight wind from the rear.
 
 ### Measurements
 
-The groups were measured from the furthest outside lead
-marks using a dial caliper. This gave three decimal digits of precision,
-ie. 0.674 inches instead of 0.7 inches. This works much better for data
-analysis.
+The groups were measured from the furthest outside lead marks using a dial
+caliper. This gave three decimal digits of precision, ie. 0.674 inches
+instead of 0.7 inches. This works much better for data analysis.
 
 ![alt text](caliper.jpg)
 
-Using this technique, five single 0.22 caliber bullet holes in the paper 
-measured 
-0.217, 0.214, 0.219, 0.223, and 0.222 inches.
-So it's appropriate to subtract 0.22 inches from the original outer 
-measurements to calculate the group size measured from center to center.
+Using this technique, five single 0.22 caliber bullet holes in the paper
+measured 0.217, 0.214, 0.219, 0.223, and 0.222 inches.  So it's appropriate
+to subtract 0.22 inches from the original outer measurements to calculate
+the group size measured from center to center.
 
-### Targets
-
-High quality, consistent targets helped shooting and measurement.
-Don't try to save money by printing out your own targets. Targets are
-very cheap relative to everything else required. Buy a 100 pack and be done
-with it. I used these [50 yd benchrest
+High quality, consistent targets helped shooting and measurement.  Don't
+try to save money by printing out your own targets. Targets are very cheap
+relative to everything else required. Buy a 100 pack and be done with it. I
+used these [50 yd benchrest
 targets](http://www.midwayusa.com/product/941874/national-target-international-bench-rest-shooters-target-ibs-50-yd-rimfire-paper-package-of-100?cm_vc=ProductFinding)
 and would recommend them.
 
@@ -102,59 +92,55 @@ These points represent the raw group sizes.
 
 ![alt text](points.png)
 
-The best groups were 0.6 MOA. But those were the tightest groups from the best
-ammunition. 
-It does not mean that this is a sub MOA gun!
-Indeed, a 95% confidence interval for the average MOA with this ammo is 
-(0.81, 1.30). So it's fair to say that it shoots 1 MOA.
+The best groups were 0.6 MOA. But those were the tightest groups from the
+best ammunition.  It does not mean that this is a sub MOA gun!  Indeed, a
+95% confidence interval for the average MOA with SK rifle match is (0.81,
+1.30). So it's fair to say that it shoots 1 MOA.
 
-Observe that the Eley Edge Black generally performed well, yet also had the worst
-group of the entire experiment. This was due to a failure to feed. 
-The cartridge was canted diagonally in the chamber as I attempted to close the bolt,
-damaging the bullet.
-I shot it anyways, and it was quite
-the flier.
-In general all the different types of Eley ammunition had trouble feeding
-from the magazine in this gun. Other ammunition fed reliably.
+Observe that the Eley Edge Black generally performed well, yet also had the
+worst group of the entire experiment. This was due to a failure to feed.
+The cartridge was canted diagonally in the chamber as I attempted to close
+the bolt, damaging the bullet.  I shot it anyways, and it was quite the
+flier.  In general all the different types of Eley ammunition had trouble
+feeding from the magazine in this gun. Other ammunition fed reliably.
 
 ### Further Analysis
 
 This experiment could have been improved through a double blind study. I
-didn't feel that it was necessary to go to the trouble, since I 
-had no preconceived notion about which ammunition would shoot best.
+didn't feel that it was necessary to go to the trouble, since I had no
+preconceived notion about which ammunition would shoot best.
 
 The linearity of the [QQ
 plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) below surprised me.
-It shows that group sizes follow a normal distribution, so we can
-use classic statistical models like ANOVA.
-I expected it to be more skewed since group sizes are necessarily
-nonnegative.
+It shows that centered and scaled group sizes follow a normal distribution,
+so we can use classic statistical models like ANOVA.  I expected it to be
+more skewed since group sizes are necessarily nonnegative.
 
 ![alt text](qqplot.png)
 
 It's very important to note that this plot was generated by *removing the
-worst group for each type of ammo*.
-This is ok within this context since 
-I don't really care if 1 in 50 shots is a flier. Otherwise
-you would need to use all the data for all the plots and analysis.
+worst group for each type of ammo*. Similarly for the calculated
+statistics.  This is ok within this context since I don't really care if 1
+in 50 shots is a flier. Otherwise you would need to use all the data for
+all the plots and analysis.
 
 ## Conclusions
 
-I focused on precision through group size. It's possible
-that accuracy could be different, and that would be a different experiment.
-I focused on precision with the assumption that once the rifle / shooter /
-ammo combination is verified to be precise, the scope could be adjusted to
-achieve accuracy. This bears out in practice, since the best ammuntion was
-consistently accurate as well.
+I focused on precision through group size. It's possible that accuracy
+could be different, and that would be a different experiment.  My
+assumption is that once the rifle / shooter / ammo combination is verified
+to be precise, the scope could be adjusted to achieve accuracy. This bears
+out in practice, since the best ammuntion was consistently accurate as
+well.
 
-This same framework could be used to test for changes in precision resulting
-from any experiment. For example, a reloader could use this to determine
-which bullets are more accurate.
+This same framework could be used to test for changes in precision
+resulting from any equipment change. For example, you could test whether
+it's more accurate to shoot off a bench or off a bipod.
 
-The boxplots on the top of the page tell the whole story. Eley
-Edge and SK rifle match were the best. Statistically there is no
-significant difference between them. But Eley Edge is more expensive
-and doesn't feed well. I'll be buying SK rifle match when I want to practice
-accurate shooting.
+With regards to the performance of the ammunition, the boxplots on the top
+of the page tell the whole story. Eley Edge and SK rifle match were the
+best. Statistically there is no significant difference between them. But
+Eley Edge is more expensive and doesn't feed well. I'll be buying SK rifle
+match when I want to practice accurate shooting.
 
 ![alt text](avg_moa.png)
