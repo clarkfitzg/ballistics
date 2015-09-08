@@ -4,22 +4,23 @@ Clark Fitzgerald, Statistics PhD student
 
 ### Abstract
 
-In this experiment I compared 7 types of commonly available, mid priced
-ammunition using a Savage bolt action .22.  One type of ammo was the clear
-winner, with 5 shot groups around 1 minute of angle (1 MOA). 
+In this experiment I compared the precision of 7 types of commonly
+available, mid priced .22 long rifle ammunition using a bolt action Savage.
+One type of ammo was the clear winner, with 5 shot groups around 1 minute
+of angle (1 MOA).  The plot below shows the distribution of group sizes,
+summarizing results. 
 
 ![alt text](boxplot.png)
 
-This plot shows the distribution of group sizes in MOA. All results are
-presented in units of MOA, since this facilitates comparisons between other
-ranges and calibers.  The [Precision Rifle
+All results are presented in units of MOA, since this facilitates
+comparisons between other ranges and calibers.  The [Precision Rifle
 Blog](http://precisionrifleblog.com/) inspired me to share what I learned. 
 
 ## Introduction
 
-I'd love to get into accurate rifle shooting, but it's a little expensive.
-However, I can start to develop some of the skills and techniques by
-practicing with an inexpensive .22. 
+There's nothing like knowing that the bullet will hit the target. The first
+step along this road is understanding what kind of performance you can
+expect from your equipment. 
 
 Using different ammo in the same gun can result in different levels of
 precision.  To get the best results out of a particular firearm you need to
@@ -46,9 +47,9 @@ around $80.
 
 There is cheaper ammo out there, but I would be surprised if it can
 consistently outperform the match grade stuff.  More expensive match grade
-ammo is available, but remember the big reason for shooting .22 is to keep
-the cost down.  I also doubt that this particular shooter / gun combination
-could achieve much better precision due to ammo. 
+ammo is available, but a big reason for shooting .22 is to keep the cost
+down. I also doubt that this particular shooter / gun combination could
+achieve much better precision due to ammo. 
 
 ### Range Time
 
@@ -79,10 +80,8 @@ measured 0.217, 0.214, 0.219, 0.223, and 0.222 inches.  So it's appropriate
 to subtract 0.22 inches from the original outer measurements to calculate
 the group size measured from center to center.
 
-High quality, consistent targets helped shooting and measurement.  Don't
-try to save money by printing out your own targets. Targets are very cheap
-relative to everything else required. Buy a 100 pack and be done with it. I
-used these [50 yd benchrest
+High quality, consistent targets helped shooting and measurement. I used
+these [50 yd benchrest
 targets](http://www.midwayusa.com/product/941874/national-target-international-bench-rest-shooters-target-ibs-50-yd-rimfire-paper-package-of-100?cm_vc=ProductFinding)
 and would recommend them.
 
@@ -113,8 +112,9 @@ preconceived notion about which ammunition would shoot best.
 The linearity of the [QQ
 plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) below surprised me.
 It shows that centered and scaled group sizes follow a normal distribution,
-so we can use classic statistical models like ANOVA.  I expected it to be
-more skewed since group sizes are necessarily nonnegative.
+so we can use classic statistical models like ANOVA for some things. I
+expected it to be more skewed since group sizes are necessarily
+nonnegative.
 
 ![alt text](qqplot.png)
 
@@ -126,19 +126,24 @@ all the plots and analysis.
 
 ## Conclusions
 
-I focused on precision through group size. It's possible that accuracy
-could be different, and that would be a different experiment.  My
-assumption is that once the rifle / shooter / ammo combination is verified
-to be precise, the scope could be adjusted to achieve accuracy. This bears
-out in practice, since the best ammuntion was consistently accurate as
-well.
+It's possible to practice accurate (1 MOA) shooting using convenient,
+readily available .22 long rifle ammunition for less than $0.20 per round.
+This is great news for reloaders and precision rifle shooters, where the
+[real cost per
+round](http://precisionrifleblog.com/2015/04/01/the-cost-of-handloading-vs-match-ammo/)
+might be $1.20 - $1.50.
+
+I focused on precision through group size. The assumption is that once the
+rifle / shooter / ammo combination is verified to be precise, the scope can
+be adjusted to achieve accuracy. This bears out in practice, since the best
+ammuntion was consistently accurate as well.
 
 This same framework could be used to test for changes in precision
 resulting from any equipment change. For example, you could test whether
 it's more accurate to shoot off a bench or off a bipod.
 
-With regards to the performance of the ammunition, the boxplots on the top
-of the page tell the whole story. Eley Edge and SK rifle match were the
+Regarding the relative performance of the ammunition, the boxplots on the
+top of the page tell the whole story. Eley Edge and SK rifle match were the
 best. Statistically there is no significant difference between them. But
 Eley Edge is more expensive and doesn't feed well. I'll be buying SK rifle
 match when I want to practice accurate shooting.
