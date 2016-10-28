@@ -2,6 +2,7 @@
 # From Hornday website
 # Wind is 4 m/s = 14.4 km/hr
 # = 9 miles/hr
+# Elevation 2000 m
 # Units are meters / mils
 #
 Range  Elev Wind
