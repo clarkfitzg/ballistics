@@ -2,6 +2,12 @@
 
 Clark Fitzgerald
 
+__NOTE__: This was one experiment conducted with one box of each ammo in
+one rifle. The results simply show what worked well in this particular rifle.
+Results for different rifle / ammo combinations may be quite different.
+I encourage readers to repeat the experiment to find what works best
+for their particular rifle.
+
 ### Abstract
 
 In this experiment I compared the precision of 7 types of commonly
