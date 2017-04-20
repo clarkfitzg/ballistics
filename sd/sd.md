@@ -1,15 +1,11 @@
----
-title: How many rounds are needed to accurately estimate sd?
-output: rmarkdown::github_document
----
-
+How many rounds are needed to accurately estimate sd?
+================
 
 Confidence intervals.
 
 Simulating given real parameters.
 
-```{R}
-
+``` r
 set.seed(793230)
 
 avg_velocity_true = 2900
@@ -19,19 +15,21 @@ n = 2
 obs = rnorm(n, avg_velocity_true, sd_true)
 
 (avg_velocity_estimate = mean(obs))
-(sd_estimate = sd(obs))
-
 ```
 
-Related question- how many observations are necessary to estimate mean and
-variance? A __ton__ of them!! https://stats.stackexchange.com/a/7008
+    ## [1] 2905.63
 
-More interesting is a confidence interval for the next round from the lot.
-This is useful because one can check ballistic tables based on upper and
-lower bounds.
+``` r
+(sd_estimate = sd(obs))
+```
 
-```{R}
+    ## [1] 5.65706
 
+Related question- how many observations are necessary to estimate mean and variance? A **ton** of them!! <https://stats.stackexchange.com/a/7008>
+
+More interesting is a confidence interval for the next round from the lot. This is useful because one can check ballistic tables based on upper and lower bounds.
+
+``` r
 conf_level = 0.95
 
 # This is really the part that matters
@@ -40,13 +38,11 @@ tmul = qt(conf_level + (1 - conf_level) / 2, n - 1)
 confidence_interval = c(
     lower = avg_velocity_estimate - sd_estimate * tmul,
     upper = avg_velocity_estimate + sd_estimate * tmul)
-
 ```
 
 Examine this a bit further:
 
-```{R}
-
+``` r
 n = 2:20
 
 tmul = function(conf_level, .n = n){
@@ -65,17 +61,15 @@ lines(n, t95, lty = 2)
 lines(n, t90, lty = 3)
 lines(n, t80, lty = 4)
 legend("topright", legend = c("99", "95", "90", "80"), lty = 1:4)
-
 ```
+
+![](sd_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 Once the lines flatten out you've reached the area of diminishing returns.
 
-You can't get better than the corresponding normal variance, so it's worth
-examining the efficiency that you give up by sampling only n points.
+You can't get better than the corresponding normal variance, so it's worth examining the efficiency that you give up by sampling only n points.
 
-
-```{R}
-
+``` r
 n = 2:15
 
 relative_efficiency = function(conf_level, .n = n){
@@ -97,16 +91,12 @@ lines(n, e90, lty = 3)
 lines(n, e80, lty = 4)
 abline(h = c(0.5, 0.8, 0.9), col = scales::alpha("blue", 0.5))
 legend("bottomright", legend = c("99", "95", "90", "80"), lty = 1:4)
-
 ```
 
-Blue lines in the plot show fixed levels of statistical efficiency.
-Tighter confidence intervals are more efficient. If one is interested in a
-95 percent confidence interval then 7 rounds will make 80 percent efficent
-estimates. 
+![](sd_files/figure-markdown_github/unnamed-chunk-4-1.png)
+
+Blue lines in the plot show fixed levels of statistical efficiency. Tighter confidence intervals are more efficient. If one is interested in a 95 percent confidence interval then 7 rounds will make 80 percent efficent estimates.
 
 TODO: Translate all this to difference in ballistic tables at 1K yards.
 
-If the rounds are extremely consistent, then one doesn't need particularly
-efficient statistics, because the standard deviations are so low that the
-ballistic tables won't change much.
+If the rounds are extremely consistent, then one doesn't need particularly efficient statistics, because the standard deviations are so low that the ballistic tables won't change much.

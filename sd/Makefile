@@ -2,7 +2,7 @@
 REPORT = sd
 
 # $< references the first prerequisite
-$(REPORT).html : $(REPORT).Rmd
+$(REPORT).md : $(REPORT).Rmd
 	Rscript -e "rmarkdown::render(commandArgs(TRUE)[1])" $<
 
 view :
