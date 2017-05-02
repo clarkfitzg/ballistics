@@ -39,8 +39,6 @@ read_hornady = function(fname)
     # http://www.hornady.com/ballistics-resource/4dof
     out = read.table(fname, header = FALSE, skip = 3L
             , sep = ",", stringsAsFactors = FALSE)
-    #out = lapply(out, as.numeric)
-    #browser()
     nm = read.table(fname, sep = ",", skip = 1L, nrows = 1L
             , stringsAsFactors = FALSE)
     nm = nm[1, ]
@@ -48,19 +46,35 @@ read_hornady = function(fname)
     out
 }
 
+diff = function(hi, low)
+{
+    hi = read_hornady(hi)
+    low = read_hornady(low)
+    low$ComeUp - hi$ComeUp
+}
 
 ```
 
 
 ```{R}
 
-b223_2580 = read_hornady("data/223_80_2580.csv")
-b223_2620 = read_hornady("data/223_80_2620.csv")
+ideal = read_hornady("data/6.5_140_2720.csv")
+wind = ideal$WindDrift / 10
+sd5 = diff("data/6.5_140_2710.csv", "data/6.5_140_2730.csv")
+sd10 = diff("data/6.5_140_2700.csv", "data/6.5_140_2740.csv")
+sd20 = diff("data/6.5_140_2680.csv", "data/6.5_140_2760.csv")
 
-Range = b223_2580$Range
-MOA = b223_2620$ComeUp - b223_2580$ComeUp 
+plot(ideal$Range, wind, type = "l"
+    , main = "Sources of error"
+    , sub = "Solid line for 1 mph wind error"
+    , xlab = "Distance (yards)"
+    , ylab = "Error MOA"
+    )
+points(ideal$Range, sd5)
+points(ideal$Range, sd10, pch = 2)
+points(ideal$Range, sd20, pch = 3)
+legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s"))
 
-plot(Range, MOA)
 
 ```
 
