@@ -39,10 +39,11 @@ read_hornady = function(fname)
     # http://www.hornady.com/ballistics-resource/4dof
     out = read.table(fname, header = FALSE, skip = 3L
             , sep = ",", stringsAsFactors = FALSE)
-    nm = read.table(fname, sep = ",", skip = 1L, nrows = 1L
+    nm = read.table(fname, sep = ",", skip = 1L, nrows = 2L
             , stringsAsFactors = FALSE)
-    nm = nm[1, ]
-    colnames(out) = nm
+    with_unit = paste0(nm[1, ], nm[2, ])
+    with_unit = gsub("[[:space:]]+$", "", with_unit)
+    colnames(out) = with_unit
     out
 }
 
@@ -50,7 +51,7 @@ diff = function(hi, low)
 {
     hi = read_hornady(hi)
     low = read_hornady(low)
-    low$ComeUp - hi$ComeUp
+    low[, "ComeUp(MOA)"] - hi[, "ComeUp(MOA)"]
 }
 
 ```
@@ -59,21 +60,27 @@ diff = function(hi, low)
 ```{R}
 
 ideal = read_hornady("data/6.5_140_2720.csv")
-wind = ideal$WindDrift / 10
+Range = ideal$Range
+wind = ideal[, "WindDrift(MOA)"] / 10
 sd5 = diff("data/6.5_140_2710.csv", "data/6.5_140_2730.csv")
 sd10 = diff("data/6.5_140_2700.csv", "data/6.5_140_2740.csv")
 sd20 = diff("data/6.5_140_2680.csv", "data/6.5_140_2760.csv")
 
-plot(ideal$Range, wind, type = "l"
-    , main = "Sources of error"
-    , sub = "Solid line for 1 mph wind error"
+ylim = range(wind, sd20)
+plot(range(Range), ylim, type = "n"
+    , main = "Confidence intervals according to velocity SD"
     , xlab = "Distance (yards)"
-    , ylab = "Error MOA"
+    , ylab = "Size of 95% confidence interval (MOA)"
     )
-points(ideal$Range, sd5)
-points(ideal$Range, sd10, pch = 2)
-points(ideal$Range, sd20, pch = 3)
-legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s"))
+lines(Range, ideal[, "WindDrift(MOA)"] / 10)
+lines(Range, ideal[, "WindDrift(MOA)"] / 5, lty = 2)
+points(Range, sd5)
+points(Range, sd10, pch = 2)
+points(Range, sd20, pch = 3)
+legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s")
+    , pch = 1:3)
+legend("topright", legend = c("1 Mph wind", "2 Mph wind"), lty = 1:2
+    , bg = "white")
 
 
 ```
