@@ -30,6 +30,40 @@ More interesting is a confidence interval for the next round from the lot.
 This is useful because one can check ballistic tables based on upper and
 lower bounds.
 
+
+```{R}
+
+read_hornady = function(fname)
+{
+    # Read a spreadsheet produced by
+    # http://www.hornady.com/ballistics-resource/4dof
+    out = read.table(fname, header = FALSE, skip = 3L
+            , sep = ",", stringsAsFactors = FALSE)
+    #out = lapply(out, as.numeric)
+    #browser()
+    nm = read.table(fname, sep = ",", skip = 1L, nrows = 1L
+            , stringsAsFactors = FALSE)
+    nm = nm[1, ]
+    colnames(out) = nm
+    out
+}
+
+
+```
+
+
+```{R}
+
+b223_2580 = read_hornady("data/223_80_2580.csv")
+b223_2620 = read_hornady("data/223_80_2620.csv")
+
+Range = b223_2580$Range
+MOA = b223_2620$ComeUp - b223_2580$ComeUp 
+
+plot(Range, MOA)
+
+```
+
 ```{R}
 
 conf_level = 0.95
