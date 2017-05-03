@@ -30,6 +30,56 @@ Related question- how many observations are necessary to estimate mean and varia
 More interesting is a confidence interval for the next round from the lot. This is useful because one can check ballistic tables based on upper and lower bounds.
 
 ``` r
+read_hornady = function(fname)
+{
+    # Read a spreadsheet produced by
+    # http://www.hornady.com/ballistics-resource/4dof
+    out = read.table(fname, header = FALSE, skip = 3L
+            , sep = ",", stringsAsFactors = FALSE)
+    nm = read.table(fname, sep = ",", skip = 1L, nrows = 2L
+            , stringsAsFactors = FALSE)
+    with_unit = paste0(nm[1, ], nm[2, ])
+    with_unit = gsub("[[:space:]]+$", "", with_unit)
+    colnames(out) = with_unit
+    out
+}
+
+diff = function(hi, low)
+{
+    hi = read_hornady(hi)
+    low = read_hornady(low)
+    low[, "ComeUp(MOA)"] - hi[, "ComeUp(MOA)"]
+}
+```
+
+``` r
+ideal = read_hornady("data/6.5_140_2720.csv")
+Range = ideal$Range
+wind = ideal[, "WindDrift(MOA)"] / 10
+sd5 = diff("data/6.5_140_2710.csv", "data/6.5_140_2730.csv")
+sd10 = diff("data/6.5_140_2700.csv", "data/6.5_140_2740.csv")
+sd20 = diff("data/6.5_140_2680.csv", "data/6.5_140_2760.csv")
+
+ylim = range(wind, sd20)
+plot(range(Range), ylim, type = "n"
+    , main = "Confidence intervals according to velocity SD"
+    , xlab = "Distance (yards)"
+    , ylab = "Size of 95% confidence interval (MOA)"
+    )
+lines(Range, ideal[, "WindDrift(MOA)"] / 10)
+lines(Range, ideal[, "WindDrift(MOA)"] / 5, lty = 2)
+points(Range, sd5)
+points(Range, sd10, pch = 2)
+points(Range, sd20, pch = 3)
+legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s")
+    , pch = 1:3)
+legend("topright", legend = c("1 Mph wind", "2 Mph wind"), lty = 1:2
+    , bg = "white")
+```
+
+![](sd_files/figure-markdown_github/unnamed-chunk-3-1.png)
+
+``` r
 conf_level = 0.95
 
 # This is really the part that matters
@@ -63,7 +113,7 @@ lines(n, t80, lty = 4)
 legend("topright", legend = c("99", "95", "90", "80"), lty = 1:4)
 ```
 
-![](sd_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](sd_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 Once the lines flatten out you've reached the area of diminishing returns.
 
@@ -93,7 +143,7 @@ abline(h = c(0.5, 0.8, 0.9), col = scales::alpha("blue", 0.5))
 legend("bottomright", legend = c("99", "95", "90", "80"), lty = 1:4)
 ```
 
-![](sd_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](sd_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 Blue lines in the plot show fixed levels of statistical efficiency. Tighter confidence intervals are more efficient. If one is interested in a 95 percent confidence interval then 7 rounds will make 80 percent efficent estimates.
 
