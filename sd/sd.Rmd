@@ -1,12 +1,39 @@
 ---
-title: How many rounds are needed to accurately estimate sd?
+title: How many rounds are needed to accurately estimate SD?
 output: rmarkdown::github_document
 ---
 
+In precision rifle circles __Standard Deviation__ (SD) refers to the
+consistency of the velocity of ammunition.  SD is actually a very general
+idea, applied to all types of data besides projectile velocities.  
 
-Confidence intervals.
+Let $v_i$ be the velocity of the $i$th
+round, $\bar{v}$ be the average velocity and $n$ be the number of rounds
+fired through a chronograph. Then the unbiased SD for a normal population
+is given by this formula:
 
-Simulating given real parameters.
+$$
+    \sqrt{ \frac{1}{n - 1} \sum_{i = 1} (v_i - \bar{v})^2 }
+$$
+
+Another common formula is to use $\frac{1}{n}$ rather than $\frac{1}{n -
+1}$. For small samples, ie. fewer than 10 this is really too optimistic.
+
+Small SD values mean that velocity is consistent. Large SD
+values mean that the velocities are inconsistent. Inconsistent velocity
+manifests itself as vertical stringing at distance. Slower bullets take
+longer to get to the target and they drop more.
+
+The only reason rifle shooters are interested in 
+
+Precision rifle shooters shoot small groups at
+distance. This can't be done if 
+
+More interesting is a [prediction
+interval](https://robjhyndman.com/hyndsight/intervals/) for the next round
+from the lot.  An This is useful because one can check ballistic tables
+based on upper and lower bounds.
+
 
 ```{R}
 
@@ -66,24 +93,41 @@ sd5 = diff("data/6.5_140_2710.csv", "data/6.5_140_2730.csv")
 sd10 = diff("data/6.5_140_2700.csv", "data/6.5_140_2740.csv")
 sd20 = diff("data/6.5_140_2680.csv", "data/6.5_140_2760.csv")
 
-ylim = range(wind, sd20)
-plot(range(Range), ylim, type = "n"
-    , main = "Confidence intervals according to velocity SD"
-    , xlab = "Distance (yards)"
-    , ylab = "Size of 95% confidence interval (MOA)"
-    )
-lines(Range, ideal[, "WindDrift(MOA)"] / 10)
-lines(Range, ideal[, "WindDrift(MOA)"] / 5, lty = 2)
-points(Range, sd5)
-points(Range, sd10, pch = 2)
-points(Range, sd20, pch = 3)
-legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s")
-    , pch = 1:3)
-legend("topright", legend = c("1 Mph wind", "2 Mph wind"), lty = 1:2
-    , bg = "white")
+plot_sd = function(...)
+{
+    ylim = range(wind, sd20)
+    plot(range(Range), ylim, type = "n"
+        , main = "Confidence intervals according to velocity SD"
+        , xlab = "Distance (yards)"
+        , ylab = "Size of 95% confidence interval (MOA)"
+        , ...
+        )
+    lines(Range, ideal[, "WindDrift(MOA)"] / 10)
+    lines(Range, ideal[, "WindDrift(MOA)"] / 5, lty = 2)
+    points(Range, sd5)
+    points(Range, sd10, pch = 2)
+    points(Range, sd20, pch = 3)
+    legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s")
+        , pch = 1:3)
+    legend("topright", legend = c("1 Mph wind", "2 Mph wind"), lty = 1:2
+        , bg = "white")
+    abline(h = 1, col = scales::alpha("blue", 0.5))
+}
 
-
+plot_sd(sub = "For 140 gr 6.5 Creedmoor at 2720 ft/s")
 ```
+
+```{R}
+ideal = read_hornady("data/223_80_2750.csv")
+Range = ideal$Range
+wind = ideal[, "WindDrift(MOA)"] / 10
+sd5 = diff("data/223_80_2740.csv", "data/223_80_2760.csv")
+sd10 = diff("data/223_80_2730.csv", "data/223_80_2770.csv")
+sd20 = diff("data/223_80_2710.csv", "data/223_80_2790.csv")
+
+plot_sd(sub = "For 80 gr .223 at 2750 ft/s")
+```
+
 
 ```{R}
 
