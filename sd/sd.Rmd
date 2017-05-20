@@ -7,7 +7,14 @@ In precision rifle circles __Standard Deviation__ (SD) refers to the
 consistency of the velocity of ammunition.  SD is actually a very general
 idea, applied to all types of data besides projectile velocities.  
 
-Let $v_i$ be the velocity of the $i$th
+Rifle shooters measure SD to determine the consistency of their ammunition.
+Small SD values mean that velocity is consistent. Large SD
+values mean that the velocities are inconsistent. Inconsistent velocity
+manifests itself as vertical stringing at distance. Slower bullets take
+longer to get to the target and they drop more. As any handloader will tell
+you, consistency is accuracy.
+
+Here's the formal definition.  Let $v_i$ be the velocity of the $i$th
 round, $\bar{v}$ be the average velocity and $n$ be the number of rounds
 fired through a chronograph. Then the unbiased SD for a normal population
 is given by this formula:
@@ -16,21 +23,28 @@ $$
     \sqrt{ \frac{1}{n - 1} \sum_{i = 1} (v_i - \bar{v})^2 }
 $$
 
-Another common formula is to use $\frac{1}{n}$ rather than $\frac{1}{n -
-1}$. For small samples, ie. fewer than 10 this is really too optimistic.
+Another common formula uses $\frac{1}{n}$ rather than $\frac{1}{n -
+1}$. This should be avoided for small samples as used here.
 
-Small SD values mean that velocity is consistent. Large SD
-values mean that the velocities are inconsistent. Inconsistent velocity
-manifests itself as vertical stringing at distance. Slower bullets take
-longer to get to the target and they drop more.
+This formula leaves $n$ free, which means that we can estimate SD using as
+few as 2 observations (not recommended). Increasing the number of rounds
+fired through the chronograph increases the accuracy of the estimate of SD.
+However, there is tension between $n$ and cost. Every round fired
+requires time to load, money for the components, and wears the barrel. 
 
-The only reason rifle shooters are interested in 
+Question:
 
-Precision rifle shooters shoot small groups at
-distance. This can't be done if 
+> What is the point of diminishing returns? 5 rounds? 7 rounds? Or do I
+> always need to shoot 20?
 
-More interesting is a [prediction
-interval](https://robjhyndman.com/hyndsight/intervals/) for the next round
+Answer:
+
+It depends. 
+
+To explore this we need to understand the idea of a [prediction
+interval](https://robjhyndman.com/hyndsight/intervals/).
+
+for the next round
 from the lot.  An This is useful because one can check ballistic tables
 based on upper and lower bounds.
 

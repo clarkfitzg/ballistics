@@ -25,9 +25,21 @@ body {
 
 <body>
 
-<h1 id="how-many-rounds-are-needed-to-accurately-estimate-sd">How many rounds are needed to accurately estimate sd?</h1>
-<p>Confidence intervals.</p>
-<p>Simulating given real parameters.</p>
+<h1 id="how-many-rounds-are-needed-to-accurately-estimate-sd">How many rounds are needed to accurately estimate SD?</h1>
+<p>In precision rifle circles <strong>Standard Deviation</strong> (SD) refers to the consistency of the velocity of ammunition. SD is actually a very general idea, applied to all types of data besides projectile velocities.</p>
+<p>Rifle shooters measure SD to determine the consistency of their ammunition. Small SD values mean that velocity is consistent. Large SD values mean that the velocities are inconsistent. Inconsistent velocity manifests itself as vertical stringing at distance. Slower bullets take longer to get to the target and they drop more. As any handloader will tell you, consistency is accuracy.</p>
+<p>Here's the formal definition. Let <em>v</em><sub><em>i</em></sub> be the velocity of the <em>i</em>th round, $\bar{v}$ be the average velocity and <em>n</em> be the number of rounds fired through a chronograph. Then the unbiased SD for a normal population is given by this formula:</p>
+<p>$$<br />
+\sqrt{ \frac{1}{n - 1} \sum_{i = 1} (v_i - \bar{v})^2 }<br />
+$$</p>
+<p>Another common formula uses $\frac{1}{n}$ rather than $\frac{1}{n - 1}$. This should be avoided for small samples as used here.</p>
+<p>This formula leaves <em>n</em> free, which means that we can estimate SD using as few as 2 observations (not recommended). Increasing the number of rounds fired through the chronograph increases the accuracy of the estimate of SD. However, there is tension between <em>n</em> and cost. Every round fired requires time to load, money for the components, and wears the barrel. This article is an answer to the question:</p>
+<blockquote>
+<p>What is the point of diminishing returns? 5 rounds? 7 rounds? Or do I always need to shoot 20?</p>
+</blockquote>
+<p>It depends.</p>
+<p>To explore this we need to understand the idea of a <a href="https://robjhyndman.com/hyndsight/intervals/">prediction interval</a>.</p>
+<p>for the next round from the lot. An This is useful because one can check ballistic tables based on upper and lower bounds.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">793230</span>)
 
 avg_velocity_true =<span class="st"> </span><span class="dv">2900</span>
