@@ -1,187 +1,53 @@
 How many rounds are needed to accurately estimate SD?
 ================
 
-In precision rifle circles **Standard Deviation** (SD) refers to the consistency of the velocity of ammunition. SD is actually a very general idea, applied to all types of data besides projectile velocities.
-
-Rifle shooters measure SD to determine the consistency of their ammunition. Small SD values mean that velocity is consistent. Large SD values mean that the velocities are inconsistent. Inconsistent velocity manifests itself as vertical stringing at distance. Slower bullets take longer to get to the target and they drop more. As any handloader will tell you, consistency is accuracy.
-
-Here's the formal definition. Let *v*<sub>*i*</sub> be the velocity of the *i*th round, $\\bar{v}$ be the average velocity and *n* be the number of rounds fired through a chronograph. Then the unbiased SD for a normal population is given by this formula:
-
-$$
-    \\sqrt{ \\frac{1}{n - 1} \\sum\_{i = 1} (v\_i - \\bar{v})^2 }
-$$
-
-Another common formula uses $\\frac{1}{n}$ rather than $\\frac{1}{n - 1}$. This should be avoided for small samples as used here.
-
-This formula leaves *n* free, which means that we can estimate SD using as few as 2 observations (not recommended). Increasing the number of rounds fired through the chronograph increases the accuracy of the estimate of SD. However, there is tension between *n* and cost. Every round fired requires time to load, money for the components, and wears the barrel. This article is an answer to the question:
-
-> What is the point of diminishing returns? 5 rounds? 7 rounds? Or do I always need to shoot 20?
-
-It depends.
-
-To explore this we need to understand the idea of a [prediction interval](https://robjhyndman.com/hyndsight/intervals/).
-
-for the next round from the lot. An This is useful because one can check ballistic tables based on upper and lower bounds.
-
-``` r
-set.seed(793230)
-
-avg_velocity_true = 2900
-sd_true = 10
-n = 2
-
-obs = rnorm(n, avg_velocity_true, sd_true)
-
-(avg_velocity_estimate = mean(obs))
-```
-
     ## [1] 2905.63
-
-``` r
-(sd_estimate = sd(obs))
-```
 
     ## [1] 5.65706
 
-Related question- how many observations are necessary to estimate mean and variance? A **ton** of them!! <https://stats.stackexchange.com/a/7008>
+In precision rifle circles **Standard Deviation** (SD) refers to the consistency of the velocity of ammunition. SD is actually a general concept of measuring the variability of any data generating process. It applies to all types of data besides projectile velocities.
 
-More interesting is a confidence interval for the next round from the lot. This is useful because one can check ballistic tables based on upper and lower bounds.
+Rifle shooters measure SD to determine the consistency of their ammunition. Small SD values mean that velocity is consistent. Large SD values mean that the velocities are inconsistent. Inconsistent velocity manifests itself as vertical stringing at distance. Slower bullets take longer to get to the target and they drop more. As any handloader will tell you, consistency is accuracy.
 
-``` r
-read_hornady = function(fname)
-{
-    # Read a spreadsheet produced by
-    # http://www.hornady.com/ballistics-resource/4dof
-    out = read.table(fname, header = FALSE, skip = 3L
-            , sep = ",", stringsAsFactors = FALSE)
-    nm = read.table(fname, sep = ",", skip = 1L, nrows = 2L
-            , stringsAsFactors = FALSE)
-    with_unit = paste0(nm[1, ], nm[2, ])
-    with_unit = gsub("[[:space:]]+$", "", with_unit)
-    colnames(out) = with_unit
-    out
-}
+Let *v*<sub>*i*</sub> be the velocity of the *i*th round, *v* be the average velocity and *n* be the number of rounds fired through a chronograph. Then the unbiased SD for a normal population is given by this formula:
 
-diff = function(hi, low)
-{
-    hi = read_hornady(hi)
-    low = read_hornady(low)
-    low[, "ComeUp(MOA)"] - hi[, "ComeUp(MOA)"]
-}
-```
+![](sigmahat.png)
 
-``` r
-ideal = read_hornady("data/6.5_140_2720.csv")
-Range = ideal$Range
-wind = ideal[, "WindDrift(MOA)"] / 10
-sd5 = diff("data/6.5_140_2710.csv", "data/6.5_140_2730.csv")
-sd10 = diff("data/6.5_140_2700.csv", "data/6.5_140_2740.csv")
-sd20 = diff("data/6.5_140_2680.csv", "data/6.5_140_2760.csv")
+Another common formula divides by n rather than n - 1. This is biased and should be avoided for small samples as used here.
 
-plot_sd = function(...)
-{
-    ylim = range(wind, sd20)
-    plot(range(Range), ylim, type = "n"
-        , main = "Confidence intervals according to velocity SD"
-        , xlab = "Distance (yards)"
-        , ylab = "Size of 95% confidence interval (MOA)"
-        , ...
-        )
-    lines(Range, ideal[, "WindDrift(MOA)"] / 10)
-    lines(Range, ideal[, "WindDrift(MOA)"] / 5, lty = 2)
-    points(Range, sd5)
-    points(Range, sd10, pch = 2)
-    points(Range, sd20, pch = 3)
-    legend("topleft", legend = c("sd 5 ft/s", "sd 10 ft/s", "sd 20 ft/s")
-        , pch = 1:3)
-    legend("topright", legend = c("1 Mph wind", "2 Mph wind"), lty = 1:2
-        , bg = "white")
-    abline(h = 1, col = scales::alpha("blue", 0.5))
-}
+The formula leaves *n* free, which means that we can estimate SD using as few as 2 observations (not recommended). Increasing the number of rounds fired through the chronograph increases the accuracy of the estimate of SD. However, there is tension between *n* and cost. Every round fired requires time to load, money for the components, and wears the barrel.
 
-plot_sd(sub = "For 140 gr 6.5 Creedmoor at 2720 ft/s")
-```
+Question:
+
+> What is the point of diminishing returns? 5 rounds? 7 rounds? Or do I always need to shoot 20?
+
+Answer:
+
+It depends.
+
+First we have to reflect on *why* we care about SD. The only reason it matters for long distance shooting is because of the vertical stringing at distance. We need to know where in the vertical plane we can reasonably expect the rounds to impact so we can use the correct elevation. In particular we need to know what the velocity of the *next* round from a given lot will be, since if we knew this we could use a ballistic calculator to compute an exact solution.
+
+Since we can't possibly know the exact velocity of a round before it is fired we turn to statistics to provide us with reasonable upper and lower bounds based on the data we've observed so far. This is the idea of a [prediction interval](https://robjhyndman.com/hyndsight/intervals/). The quick and dirty formula for a 95% confidence interval is (*v* − 2 \* *S**D*, *v* + 2 \* *S**D*). This means that if the shooter repeats this process many times for many different lots of ammunition then approximately 95% of the predicted velocities will be inside the confidence interval.
+
+For example, if average velocity is 2720 ft/s and SD is 10 ft/s then a 95% confidence interval for the next round is (2700, 2740). For a 140 grain 6.5 Creedmoor this velocity difference translates to a 0.5 MOA vertical spread at 600 yards. So if you have a perfect hold on a perfect gun on a perfect clear day with no wind and you're aiming at the 0.5 MOA X ring on an F class target then you can expect on average 95% or 19 / 20 shots to impact in the vertical region of the X ring.
+
+In reality these other sources of variability are rarely perfect. So if you're competitive then you may well benefit from shrinking SD down from 10 to 5 ft/s to cut your velocity based vertical dispersion in half.
+
+The following charts illustrate the ideas for two common cartridges. All data was generated using the [Hornady 4DOF ballistic calculator](http://www.hornady.com/ballistics-resource/4dof) based on Hornady's ELD Match bullets available in the drop down menu. The effect of a 1 and 2 mph wind is also
+
+![](sd_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ![](sd_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
-``` r
-ideal = read_hornady("data/223_80_2750.csv")
-Range = ideal$Range
-wind = ideal[, "WindDrift(MOA)"] / 10
-sd5 = diff("data/223_80_2740.csv", "data/223_80_2760.csv")
-sd10 = diff("data/223_80_2730.csv", "data/223_80_2770.csv")
-sd20 = diff("data/223_80_2710.csv", "data/223_80_2790.csv")
-
-plot_sd(sub = "For 80 gr .223 at 2750 ft/s")
-```
-
-![](sd_files/figure-markdown_github/unnamed-chunk-4-1.png)
-
-``` r
-conf_level = 0.95
-
-# This is really the part that matters
-tmul = qt(conf_level + (1 - conf_level) / 2, n - 1)
-
-confidence_interval = c(
-    lower = avg_velocity_estimate - sd_estimate * tmul,
-    upper = avg_velocity_estimate + sd_estimate * tmul)
-```
-
 Examine this a bit further:
 
-``` r
-n = 2:20
-
-tmul = function(conf_level, .n = n){
-    qt(conf_level + (1 - conf_level) / 2, .n - 1)
-}
-
-t80 = tmul(0.8)
-t90 = tmul(0.9)
-t95 = tmul(0.95)
-t99 = tmul(0.99)
-
-
-plot(n, t99, ylim = c(0, 10), type = "l", xlab = "Rounds Fired"
-    , ylab = "SD Multiplier", main = "Size of confidence intervals")
-lines(n, t95, lty = 2)
-lines(n, t90, lty = 3)
-lines(n, t80, lty = 4)
-legend("topright", legend = c("99", "95", "90", "80"), lty = 1:4)
-```
-
-![](sd_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](sd_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 Once the lines flatten out you've reached the area of diminishing returns.
 
 You can't get better than the corresponding normal variance, so it's worth examining the efficiency that you give up by sampling only n points.
 
-``` r
-n = 2:15
-
-relative_efficiency = function(conf_level, .n = n){
-    lowerbound = qnorm(conf_level + (1 - conf_level) / 2)
-    lowerbound / tmul(conf_level, .n)
-}
-
-e80 = relative_efficiency(0.8)
-e90 = relative_efficiency(0.9)
-e95 = relative_efficiency(0.95)
-e99 = relative_efficiency(0.99)
-
-
-plot(n, e99, ylim = c(0, 1), type = "l", xlab = "Rounds Fired"
-    , ylab = "Relative Efficiency"
-    , main = "relative efficiency based on confidence level")
-lines(n, e95, lty = 2)
-lines(n, e90, lty = 3)
-lines(n, e80, lty = 4)
-abline(h = c(0.5, 0.8, 0.9), col = scales::alpha("blue", 0.5))
-legend("bottomright", legend = c("99", "95", "90", "80"), lty = 1:4)
-```
-
-![](sd_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](sd_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 Blue lines in the plot show fixed levels of statistical efficiency. Tighter confidence intervals are more efficient. If one is interested in a 95 percent confidence interval then 7 rounds will make 80 percent efficent estimates.
 
